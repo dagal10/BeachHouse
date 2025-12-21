@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galveston Beach House Comparison | June 26-28, 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sand: #f5e6d3;
+            --ocean-deep: #1a5276;
+            --ocean-light: #5dade2;
+            --coral: #e74c3c;
+            --seafoam: #76d7c4;
+            --shell-pink: #fadbd8;
+            --driftwood: #6c5b4b;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --gold: #f1c40f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, var(--sand) 0%, #e8d4bc 50%, var(--shell-pink) 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--ocean-deep) 0%, #2980b9 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23f5e6d3' d='M0,20 Q360,40 720,20 T1440,20 L1440,40 L0,40 Z'/%3E%3C/svg%3E");
+            background-size: cover;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .trip-details {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .trip-detail {
+            background: rgba(255,255,255,0.15);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Quick Summary Table */
+        .summary-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        .summary-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--ocean-deep);
+            font-size: 1.75rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 900px;
+        }
+
+        .summary-table th {
+            background: var(--ocean-deep);
+            color: var(--white);
+            padding: 0.75rem 0.5rem;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .summary-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .summary-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .summary-table td {
+            padding: 0.75rem 0.5rem;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        .summary-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .summary-table tr:hover {
+            background: var(--shell-pink);
+        }
+
+        .option-number {
+            background: var(--ocean-deep);
+            color: var(--white);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .rating-score {
+            background: var(--seafoam);
+            color: var(--text-dark);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .rating-score.excellent {
+            background: #27ae60;
+            color: white;
+        }
+
+        .rating-score.very-good {
+            background: #76d7c4;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--ocean-deep);
+        }
+
+        .check-icon {
+            color: #27ae60;
+        }
+
+        .x-icon {
+            color: #e74c3c;
+        }
+
+        /* Highlights Section */
+        .highlights-section {
+            background: linear-gradient(135deg, var(--ocean-deep) 0%, #2980b9 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+        }
+
+        .highlights-section h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .highlight-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .highlight-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .highlight-card p {
+            opacity: 0.9;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Property Cards - FIXED LAYOUT */
+        .properties-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .property-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .property-header {
+            background: linear-gradient(135deg, var(--ocean-deep) 0%, #2980b9 100%);
+            color: var(--white);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .property-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .option-badge {
+            background: var(--coral);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .rating-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* Photo Gallery Section */
+        .photo-gallery-section {
+            padding: 1rem 1.5rem;
+            background: #f0f4f8;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .photo-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .photo-container {
+            flex: 1;
+            aspect-ratio: 16/10;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Gallery Navigation Arrows */
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease, background 0.2s ease;
+            z-index: 10;
+        }
+
+        .photo-container:hover .gallery-nav {
+            opacity: 1;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-nav.prev {
+            left: 8px;
+        }
+
+        .gallery-nav.next {
+            right: 8px;
+        }
+
+        .gallery-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Image counter indicator */
+        .image-counter {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            z-index: 10;
+        }
+
+        /* Gallery image wrapper */
+        .gallery-images {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery-images img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-images img.active {
+            opacity: 1;
+        }
+
+        .photo-container .photo-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 2rem 1rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .photo-placeholder .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-placeholder a {
+            color: white;
+            text-decoration: underline;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .view-photos-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .view-photos-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .photo-highlights {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .photo-highlight {
+            background: white;
+            padding: 0.35rem 0.65rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .property-image .label {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Details Section */
+        .property-details {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item {
+            background: #f0f4f8;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-item .emoji {
+            font-size: 1.1rem;
+        }
+
+        .stat-item strong {
+            color: var(--ocean-deep);
+        }
+
+        .amenities-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .amenity-tag {
+            background: var(--shell-pink);
+            color: var(--text-dark);
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .amenity-tag.highlight {
+            background: var(--seafoam);
+            font-weight: 500;
+        }
+
+        .property-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .property-footer {
+            background: #f0f4f8;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .price-info {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .total-price {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--ocean-deep);
+        }
+
+        .price-details {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .per-person {
+            color: var(--coral);
+            font-weight: 600;
+        }
+
+        .book-btn {
+            background: linear-gradient(135deg, var(--coral) 0%, #c0392b 100%);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .book-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Special card styles */
+        .property-card.best-value .property-header {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+        }
+
+        .property-card.best-value .option-badge {
+            background: #f1c40f;
+            color: #2c3e50;
+        }
+
+        .property-card.top-rated .property-header {
+            background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+            color: #2c3e50;
+        }
+
+        .property-card.top-rated .rating-badge {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .property-card.premium .property-header {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.75rem;
+            }
+
+            .property-images {
+                flex-direction: column;
+            }
+
+            .property-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .property-footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .price-info {
+                justify-content: center;
+            }
+
+            .stats-row {
+                justify-content: center;
+            }
+
+            .amenities-row {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏖️ Galveston Beach House Showdown</h1>
+        <p>Comparing 11 amazing vacation rentals for our group trip!</p>
+        <div class="trip-details">
+            <div class="trip-detail">📅 June 26-28, 2026</div>
+            <div class="trip-detail">👥 14 Travelers</div>
+            <div class="trip-detail">🌴 2 Nights</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Quick Comparison Table -->
+        <section class="summary-section">
+            <h2>⚡ Quick Comparison At-A-Glance</h2>
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Property Name</th>
+                        <th>Sleeps</th>
+                        <th>Beds/Baths</th>
+                        <th>Rating</th>
+                        <th>Pool</th>
+                        <th>Hot Tub</th>
+                        <th>Pets</th>
+                        <th>Beach</th>
+                        <th>Total</th>
+                        <th>Per Person</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="option-number">1</span></td>
+                        <td><strong>Spacious Beach House, Pool & Huge Deck</strong></td>
+                        <td>32</td>
+                        <td>6 BR / 4.5 BA</td>
+                        <td><span class="rating-score very-good">8.4</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>4 min drive</td>
+                        <td class="price">$3,282</td>
+                        <td>~$235</td>
+                    </tr>
+                    <tr>
+                        <td><span class="option-number">2</span></td>
+                        <td><strong>Large Luxurious Home with Private Pool</strong></td>
+                        <td>23</td>
+                        <td>7 BR / 5 BA</td>
+                        <td><span class="rating-score excellent">8.8</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>3 min drive</td>
+                        <td class="price">$3,661</td>
+                        <td>~$262</td>
+                    </tr>
+                    <tr>
+                        <td><span class="option-number">3</span></td>
+                        <td><strong>Family Retreat w/ Pool and Game Room</strong></td>
+                        <td>20</td>
+                        <td>5 BR / 3 BA</td>
+                        <td><span class="rating-score excellent">9.0</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>30 sec</td>
+                        <td class="price">$2,659</td>
+                        <td>~$190</td>
+                    </tr>
+                    <tr style="background: #d5f4e6 !important;">
+                        <td><span class="option-number" style="background: #27ae60;">4</span></td>
+                        <td><strong>💰 Galveston Gem: Two Homes, Pool & More</strong></td>
+                        <td>16</td>
+                        <td>5 BR / 3 BA</td>
+                        <td><span class="rating-score excellent">9.0</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>30 sec</td>
+                        <td class="price" style="color: #27ae60;">$2,084</td>
+                        <td style="color: #27ae60; font-weight: bold;">~$149 💰</td>
+                    </tr>
+                    <tr>
+                        <td><span class="option-number">5</span></td>
+                        <td><strong>Charming Classic Home in Galveston's Heart</strong></td>
+                        <td>20</td>
+                        <td>5 BR / 4.5 BA</td>
+                        <td><span class="rating-score excellent">8.8</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>7 min drive</td>
+                        <td class="price">$2,170</td>
+                        <td>~$155</td>
+                    </tr>
+                    <tr>
+                        <td><span class="option-number">6</span></td>
+                        <td><strong>Relax in Beachside Comfort with Views</strong></td>
+                        <td>30</td>
+                        <td>6 BR / 4.5 BA</td>
+                        <td><span class="rating-score very-good">8.4</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>2 min walk!</td>
+                        <td class="price">$3,970</td>
+                        <td>~$284</td>
+                    </tr>
+                    <tr>
+                        <td><span class="option-number">7</span></td>
+                        <td><strong>Family-Friendly Getaway, Close to Beach</strong></td>
+                        <td>21</td>
+                        <td>5 BR / 3.5 BA</td>
+                        <td><span class="rating-score excellent">9.2</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>3 min drive</td>
+                        <td class="price">$3,092</td>
+                        <td>~$221</td>
+                    </tr>
+                    <tr style="background: #fef9e7 !important;">
+                        <td><span class="option-number" style="background: #f39c12;">8</span></td>
+                        <td><strong>⭐ Island Time Poolside | Walk to Beach</strong></td>
+                        <td>16</td>
+                        <td>5 BR / 4 BA</td>
+                        <td><span class="rating-score excellent">10.0</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>2 min walk!</td>
+                        <td class="price">$2,627</td>
+                        <td>~$188</td>
+                    </tr>
+                    <tr>
+                        <td><span class="option-number">9</span></td>
+                        <td><strong>Sandpiper House - Heated Pool & Spa</strong></td>
+                        <td>18</td>
+                        <td>5 BR / 3.5 BA</td>
+                        <td><span class="rating-score excellent">9.6</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td>2 min drive</td>
+                        <td class="price">$2,470</td>
+                        <td>~$176</td>
+                    </tr>
+                    <tr>
+                        <td><span class="option-number">10</span></td>
+                        <td><strong>Cozy Home w/ 2 Pools, Vball Court</strong></td>
+                        <td>22</td>
+                        <td>6 BR / 3 BA</td>
+                        <td><span class="rating-score excellent">9.0</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>3 min walk!</td>
+                        <td class="price">$2,682</td>
+                        <td>~$192</td>
+                    </tr>
+                    <tr style="background: #f4ecf7 !important;">
+                        <td><span class="option-number" style="background: #9b59b6;">11</span></td>
+                        <td><strong>⭐ The Oasis at R. - Heated Pool & Spa</strong></td>
+                        <td>14</td>
+                        <td>5 BR / 3 BA</td>
+                        <td><span class="rating-score excellent">10.0</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="x-icon">✗</span></td>
+                        <td>7 min walk</td>
+                        <td class="price">$2,133</td>
+                        <td>~$152</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="legend">
+                <div class="legend-item"><span class="check-icon">✓</span> = Yes</div>
+                <div class="legend-item"><span class="x-icon">✗</span> = No</div>
+                <div class="legend-item">💰 All prices include fees for 2 nights</div>
+            </div>
+        </section>
+
+        <!-- Highlights Section -->
+        <section class="highlights-section">
+            <h2>🏆 Top Picks by Category</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="icon">💰</div>
+                    <h4>Best Value</h4>
+                    <p><strong>Option 4</strong><br>Only ~$149/person!</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">⭐</div>
+                    <h4>Highest Rated</h4>
+                    <p><strong>Options 8 & 11</strong><br>Perfect 10/10!</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">🏖️</div>
+                    <h4>Closest to Beach</h4>
+                    <p><strong>Option 6</strong><br>2 minute walk!</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">👨‍👩‍👧‍👦</div>
+                    <h4>Most Space</h4>
+                    <p><strong>Option 1</strong><br>Sleeps 32!</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">🎉</div>
+                    <h4>Most Fun</h4>
+                    <p><strong>Option 10</strong><br>2 Pools + Volleyball!</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">♨️</div>
+                    <h4>Has Hot Tub</h4>
+                    <p><strong>Options 9 & 11</strong><br>Pool + Spa combo!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Property Cards -->
+        <section class="properties-grid">
+
+            <!-- Option 1 -->
+            <article class="property-card">
+                <div class="property-header">
+                    <h3><span class="option-badge">1</span> Spacious Beach House, Pool & Huge Deck</h3>
+                    <span class="rating-badge">⭐ 8.4/10 Very Good</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="1" data-type="pool" style="background: linear-gradient(135deg, #3498db 0%, #1abc9c 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊</span>
+                                <span>Above-Ground Pool<br>4ft deep + huge deck</span>
+                                <a href="https://www.vrbo.com/4146676?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Pool</div>
+                        </div>
+                        <div class="photo-container" data-option="1" data-type="exterior" style="background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏠</span>
+                                <span>6BR Beach House<br>2 acres of privacy!</span>
+                                <a href="https://www.vrbo.com/4146676?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Exterior</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/4146676?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn">📸 View All Photos on VRBO</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>6 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>4.5 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 32</strong></div>
+                        <div class="stat-item"><span class="emoji">📐</span> <strong>2,002 sq ft</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏊 Private Pool</span>
+                        <span class="amenity-tag highlight">🎮 Game Room</span>
+                        <span class="amenity-tag highlight">🔥 Fire Pit</span>
+                        <span class="amenity-tag">🐕 Pet Friendly</span>
+                        <span class="amenity-tag">🅿️ 6 Car Parking</span>
+                        <span class="amenity-tag">📺 Ping Pong</span>
+                        <span class="amenity-tag">⚽ Foosball</span>
+                        <span class="amenity-tag">🎰 Arcade</span>
+                    </div>
+                    <p class="property-description">
+                        This 6-bedroom Galveston gem sits on 2 private acres with virtually no neighbors! Features a private pool, game room with ping pong, foosball & arcade games, plus a fire pit. Great for large family reunions. West End location, 4 min drive to beaches.
+                    </p>
+                </div>
+                <div class="property-footer">
+                    <div class="price-info">
+                        <span class="total-price">$3,282</span>
+                        <span class="price-details">for 2 nights • <span class="per-person">~$235/person</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/4146676?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn">View on VRBO →</a>
+                </div>
+            </article>
+
+            <!-- Option 2 -->
+            <article class="property-card">
+                <div class="property-header">
+                    <h3><span class="option-badge">2</span> Large Luxurious Home with Private Pool</h3>
+                    <span class="rating-badge">⭐ 8.8/10 Excellent</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="2" data-type="pool" style="background: linear-gradient(135deg, #3498db 0%, #1abc9c 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊</span>
+                                <span>Above-Ground Pool<br>4ft deep + lounging deck</span>
+                                <a href="https://www.vrbo.com/2873463?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Pool</div>
+                        </div>
+                        <div class="photo-container" data-option="2" data-type="exterior" style="background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏠</span>
+                                <span>7BR Luxury Home<br>+ Guest House</span>
+                                <a href="https://www.vrbo.com/2873463?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Exterior</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/2873463?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn">📸 View All Photos on VRBO</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>7 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>5 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 23</strong></div>
+                        <div class="stat-item"><span class="emoji">📐</span> <strong>3,595 sq ft</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏊 Private Pool</span>
+                        <span class="amenity-tag highlight">🏠 Guest House</span>
+                        <span class="amenity-tag highlight">🔥 Fire Pit</span>
+                        <span class="amenity-tag">🐕 Dog Friendly</span>
+                        <span class="amenity-tag">🅿️ 5 Car Parking</span>
+                        <span class="amenity-tag">🚶 Walk to Seawall</span>
+                    </div>
+                    <p class="property-description">
+                        Make memories at "Heart of It All"! Main house + separate guest house with full kitchen. 13 min walk to Galveston Seawall, 18 min to Pleasure Pier. East end location, 5 min from The Strand. Perfect for large groups who want walkable attractions.
+                    </p>
+                </div>
+                <div class="property-footer">
+                    <div class="price-info">
+                        <span class="total-price">$3,661</span>
+                        <span class="price-details">for 2 nights • <span class="per-person">~$262/person</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/2873463?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn">View on VRBO →</a>
+                </div>
+            </article>
+
+            <!-- Option 3 -->
+            <article class="property-card">
+                <div class="property-header">
+                    <h3><span class="option-badge">3</span> Family Retreat w/ Pool and Game Room</h3>
+                    <span class="rating-badge">⭐ 9.0/10 Wonderful</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="3" data-type="pool" style="background: linear-gradient(135deg, #3498db 0%, #1abc9c 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊</span>
+                                <span>Large In-Ground Pool<br>4-6ft deep!</span>
+                                <a href="https://www.vrbo.com/3737974?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Pool</div>
+                        </div>
+                        <div class="photo-container" data-option="3" data-type="exterior" style="background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏠</span>
+                                <span>5BR Family Home<br>1 Block from Seawall</span>
+                                <a href="https://www.vrbo.com/3737974?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Exterior</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/3737974?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn">📸 View All Photos on VRBO</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>5 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>3 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 20</strong></div>
+                        <div class="stat-item"><span class="emoji">📐</span> <strong>1,636 sq ft</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏊 In-Ground Pool</span>
+                        <span class="amenity-tag highlight">🎮 Game Room</span>
+                        <span class="amenity-tag highlight">🔥 Fire Pit</span>
+                        <span class="amenity-tag">🐕 Pet Friendly</span>
+                        <span class="amenity-tag">🅿️ 4 Cars</span>
+                        <span class="amenity-tag">🎰 Arcade</span>
+                        <span class="amenity-tag">⚽ Foosball</span>
+                    </div>
+                    <p class="property-description">
+                        Just 1 block from the Seawall! Large in-ground pool (4-6ft), game room with arcade games, foosball & TV. Near Moody Gardens and Schlitterbahn. Quick walk or 30 second drive to beach!
+                    </p>
+                </div>
+                <div class="property-footer">
+                    <div class="price-info">
+                        <span class="total-price">$2,659</span>
+                        <span class="price-details">for 2 nights • <span class="per-person">~$190/person</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/3737974?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn">View on VRBO →</a>
+                </div>
+            </article>
+
+            <!-- Option 4 - BEST VALUE -->
+            <article class="property-card best-value">
+                <div class="property-header">
+                    <h3><span class="option-badge">4</span> 💰 Galveston Gem: Two Homes - BEST VALUE</h3>
+                    <span class="rating-badge">⭐ 9.0/10 Wonderful</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="4" data-type="pool" style="background: linear-gradient(135deg, #27ae60 0%, #1abc9c 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊</span>
+                                <span>Pool + Wraparound Deck</span>
+                                <a href="https://www.vrbo.com/2156016?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Pool 💰</div>
+                        </div>
+                        <div class="photo-container" data-option="4" data-type="exterior" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏠🏠</span>
+                                <span>TWO Homes!<br>Main + Guest Suite</span>
+                                <a href="https://www.vrbo.com/2156016?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Exterior 💰</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/2156016?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);">📸 View All Photos on VRBO 💰</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>5 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>3 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 16</strong></div>
+                        <div class="stat-item"><span class="emoji">📐</span> <strong>2,228 sq ft</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏊 Pool + Deck</span>
+                        <span class="amenity-tag highlight">🏠 Two Homes!</span>
+                        <span class="amenity-tag highlight">🍖 BBQ Grill</span>
+                        <span class="amenity-tag">🐕 Dog Friendly</span>
+                        <span class="amenity-tag">🅿️ 5 Cars</span>
+                        <span class="amenity-tag">🌊 Steps to Seawall</span>
+                    </div>
+                    <p class="property-description">
+                        A mini-compound with TWO homes - main house + guest suite in back! Bright, vibrant coastal decor. Pool with wraparound deck, BBQ area. Seconds from Seawall yet private. 3 min from Moody Gardens. <strong>Best value at only ~$149/person!</strong>
+                    </p>
+                </div>
+                <div class="property-footer" style="background: #d5f4e6;">
+                    <div class="price-info">
+                        <span class="total-price" style="color: #27ae60;">$2,084 💰</span>
+                        <span class="price-details">for 2 nights • <span class="per-person" style="color: #27ae60;">~$149/person - LOWEST!</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/2156016?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);">View on VRBO →</a>
+                </div>
+            </article>
+
+            <!-- Option 5 -->
+            <article class="property-card">
+                <div class="property-header">
+                    <h3><span class="option-badge">5</span> Charming Classic Home in Galveston's Heart</h3>
+                    <span class="rating-badge">⭐ 8.8/10 Excellent</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="5" data-type="pool" style="background: linear-gradient(135deg, #3498db 0%, #1abc9c 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊</span>
+                                <span>Above-Ground Pool<br>4ft deep + large deck</span>
+                                <a href="https://www.vrbo.com/3142857?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Pool</div>
+                        </div>
+                        <div class="photo-container" data-option="5" data-type="exterior" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏛️</span>
+                                <span>Historic 2-Story Home<br>Near Downtown Strand</span>
+                                <a href="https://www.vrbo.com/3142857?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Exterior</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/3142857?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn">📸 View All Photos on VRBO</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>5 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>4.5 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 20</strong></div>
+                        <div class="stat-item"><span class="emoji">📐</span> <strong>1,991 sq ft</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏊 Pool + Deck</span>
+                        <span class="amenity-tag highlight">🎮 Game Room</span>
+                        <span class="amenity-tag highlight">🍸 Dry Bar</span>
+                        <span class="amenity-tag">🐕 Dog Friendly</span>
+                        <span class="amenity-tag">🅿️ 3 Cars</span>
+                        <span class="amenity-tag">🚢 Near Cruise Terminal</span>
+                    </div>
+                    <p class="property-description">
+                        "Broadway Lodge" - Close to everything! 5 min from Historic Strand and cruise terminals, 7 min to beach. Two-story with game room. Great for those wanting to explore downtown Galveston.
+                    </p>
+                </div>
+                <div class="property-footer">
+                    <div class="price-info">
+                        <span class="total-price">$2,170</span>
+                        <span class="price-details">for 2 nights • <span class="per-person">~$155/person</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/3142857?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn">View on VRBO →</a>
+                </div>
+            </article>
+
+            <!-- Option 6 -->
+            <article class="property-card">
+                <div class="property-header">
+                    <h3><span class="option-badge">6</span> 🏖️ Beachside Comfort - CLOSEST TO BEACH</h3>
+                    <span class="rating-badge">⭐ 8.4/10 Very Good</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="6" data-type="pool" style="background: linear-gradient(135deg, #3498db 0%, #1abc9c 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊</span>
+                                <span>Private Pool + Fire Pit</span>
+                                <a href="https://www.vrbo.com/3252017?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Pool</div>
+                        </div>
+                        <div class="photo-container" data-option="6" data-type="exterior" style="background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏖️</span>
+                                <span>6BR Beachfront<br>2 MIN WALK TO BEACH!</span>
+                                <a href="https://www.vrbo.com/3252017?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Beach Access</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/3252017?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn">📸 View All Photos on VRBO</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>6 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>4.5 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 30</strong></div>
+                        <div class="stat-item"><span class="emoji">📐</span> <strong>2,820 sq ft</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏖️ 2 MIN WALK!</span>
+                        <span class="amenity-tag highlight">🍳 2 Kitchens</span>
+                        <span class="amenity-tag highlight">🔥 Fire Pit</span>
+                        <span class="amenity-tag">🐕 Dog Friendly</span>
+                        <span class="amenity-tag">🎮 Game Room</span>
+                        <span class="amenity-tag">♿ Wheelchair Ramp</span>
+                    </div>
+                    <p class="property-description">
+                        "Bermuda Rose" - THE closest to the beach! 2 minute WALK to Bermuda Beach. TWO full kitchens, TWO living areas, TWO patios. Game room with darts & arcade. Wheelchair accessible ramp.
+                    </p>
+                </div>
+                <div class="property-footer">
+                    <div class="price-info">
+                        <span class="total-price">$3,970</span>
+                        <span class="price-details">for 2 nights • <span class="per-person">~$284/person</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/3252017?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn">View on VRBO →</a>
+                </div>
+            </article>
+
+            <!-- Option 7 -->
+            <article class="property-card">
+                <div class="property-header">
+                    <h3><span class="option-badge">7</span> Family-Friendly Getaway, Close to Beach</h3>
+                    <span class="rating-badge">⭐ 9.2/10 Wonderful</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="7" data-type="pool" style="background: linear-gradient(135deg, #3498db 0%, #1abc9c 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊</span>
+                                <span>NEW In-Ground Pool<br>Built Summer 2024!</span>
+                                <a href="https://www.vrbo.com/1269804?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">NEW Pool!</div>
+                        </div>
+                        <div class="photo-container" data-option="7" data-type="exterior" style="background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏠</span>
+                                <span>5BR Casa Azul<br>Fully Fenced Yard</span>
+                                <a href="https://www.vrbo.com/1269804?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Exterior</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/1269804?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn">📸 View All Photos on VRBO</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>5 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>3.5 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 21</strong></div>
+                        <div class="stat-item"><span class="emoji">📐</span> <strong>2,691 sq ft</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏊 NEW Pool!</span>
+                        <span class="amenity-tag highlight">🐕 Fenced Yard</span>
+                        <span class="amenity-tag highlight">🔥 Fire Pit</span>
+                        <span class="amenity-tag">🛁 Soaking Tub</span>
+                        <span class="amenity-tag">🎮 Game Room</span>
+                        <span class="amenity-tag">🅿️ 3 Cars</span>
+                    </div>
+                    <p class="property-description">
+                        "Casa Azul" - Brand new pool completed Summer 2024! Fully fenced yard perfect for pets. Master suite with soaking tub. 3 min drive to beach, easy access to Seawall, Pleasure Pier & downtown.
+                    </p>
+                </div>
+                <div class="property-footer">
+                    <div class="price-info">
+                        <span class="total-price">$3,092</span>
+                        <span class="price-details">for 2 nights • <span class="per-person">~$221/person</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/1269804?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn">View on VRBO →</a>
+                </div>
+            </article>
+
+            <!-- Option 8 - TOP RATED -->
+            <article class="property-card top-rated">
+                <div class="property-header">
+                    <h3><span class="option-badge">8</span> ⭐ Island Time Poolside - TOP RATED</h3>
+                    <span class="rating-badge">⭐ 10/10 EXCEPTIONAL</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="8" data-type="pool" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊</span>
+                                <span>HEATED Pool<br>+ Fully Fenced Yard</span>
+                                <a href="https://www.vrbo.com/3284616?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">⭐ HEATED Pool</div>
+                        </div>
+                        <div class="photo-container" data-option="8" data-type="exterior" style="background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏠</span>
+                                <span>5BR Charming Home<br>Shiplap Accent Walls</span>
+                                <a href="https://www.vrbo.com/3284616?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">⭐ Exterior</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/3284616?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);">📸 View All Photos ⭐ TOP RATED</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>5 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>4 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 16</strong></div>
+                        <div class="stat-item"><span class="emoji">🏖️</span> <strong>2 min walk!</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏊 HEATED Pool</span>
+                        <span class="amenity-tag highlight">🏖️ 2 MIN WALK</span>
+                        <span class="amenity-tag highlight">🔥 Fire Pit</span>
+                        <span class="amenity-tag">🐕 Dog Friendly</span>
+                        <span class="amenity-tag">🅿️ 6 Cars</span>
+                        <span class="amenity-tag">💻 Office</span>
+                        <span class="amenity-tag">🍖 Grill</span>
+                    </div>
+                    <p class="property-description">
+                        Perfect 10/10 rating! HEATED pool, 1 block from beach, short walk to Pleasure Pier. Beautifully decorated with shiplap accent walls. Fully fenced backyard, fire pit, 6 parking spaces. Premium host!
+                    </p>
+                </div>
+                <div class="property-footer" style="background: #fef9e7;">
+                    <div class="price-info">
+                        <span class="total-price" style="color: #f39c12;">$2,627 ⭐</span>
+                        <span class="price-details">for 2 nights • <span class="per-person">~$188/person</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/3284616?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);">View on VRBO →</a>
+                </div>
+            </article>
+
+            <!-- Option 9 -->
+            <article class="property-card">
+                <div class="property-header">
+                    <h3><span class="option-badge">9</span> Sandpiper House - Heated Pool & Spa</h3>
+                    <span class="rating-badge">⭐ 9.6/10 Exceptional</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="9" data-type="pool" style="background: linear-gradient(135deg, #3498db 0%, #9b59b6 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊♨️</span>
+                                <span>HEATED Pool + HOT TUB!</span>
+                                <a href="https://www.vrbo.com/4379912?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Pool + Hot Tub</div>
+                        </div>
+                        <div class="photo-container" data-option="9" data-type="exterior" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏛️</span>
+                                <span>Historic Golden Era Home<br>Elegant Architecture</span>
+                                <a href="https://www.vrbo.com/4379912?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Exterior</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/4379912?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn">📸 View All Photos on VRBO</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>5 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>3.5 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 18</strong></div>
+                        <div class="stat-item"><span class="emoji">📐</span> <strong>3,200 sq ft</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏊 HEATED Pool</span>
+                        <span class="amenity-tag highlight">♨️ HOT TUB!</span>
+                        <span class="amenity-tag highlight">🏛️ Historic Home</span>
+                        <span class="amenity-tag">🚗 Garage Parking</span>
+                        <span class="amenity-tag">🚶 Walk to Strand</span>
+                        <span class="amenity-tag" style="background: #ffcccc;">❌ No Pets</span>
+                    </div>
+                    <p class="property-description">
+                        Historic Golden Era home on Broadway Street with elegant architecture! HEATED pool + HOT TUB combo. Garage parking available. Walk to Strand Theatre. Note: No pets allowed.
+                    </p>
+                </div>
+                <div class="property-footer">
+                    <div class="price-info">
+                        <span class="total-price">$2,470</span>
+                        <span class="price-details">for 2 nights • <span class="per-person">~$176/person</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/4379912?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn">View on VRBO →</a>
+                </div>
+            </article>
+
+            <!-- Option 10 -->
+            <article class="property-card">
+                <div class="property-header">
+                    <h3><span class="option-badge">10</span> 🏐 2 Pools, Vball Court & Ocean Views</h3>
+                    <span class="rating-badge">⭐ 9.0/10 Wonderful</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="10" data-type="pool" style="background: linear-gradient(135deg, #3498db 0%, #1abc9c 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊🏊</span>
+                                <span>2 POOLS!<br>Large + Cowboy pool</span>
+                                <a href="https://www.vrbo.com/2757575?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">2 Pools!</div>
+                        </div>
+                        <div class="photo-container" data-option="10" data-type="exterior" style="background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏐🌊</span>
+                                <span>Private Volleyball!<br>+ Ocean Views</span>
+                                <a href="https://www.vrbo.com/2757575?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">Volleyball + Views</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/2757575?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn">📸 View All Photos on VRBO</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>6 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>3 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 22</strong></div>
+                        <div class="stat-item"><span class="emoji">📐</span> <strong>2,088 sq ft</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏊 Large Pool</span>
+                        <span class="amenity-tag highlight">🏊 Cowboy Pool</span>
+                        <span class="amenity-tag highlight">🏐 Volleyball!</span>
+                        <span class="amenity-tag highlight">🌊 Ocean Views</span>
+                        <span class="amenity-tag">🔥 Fire Pit</span>
+                        <span class="amenity-tag">🐕 Dog Friendly</span>
+                        <span class="amenity-tag">🚤 Boat Launch</span>
+                    </div>
+                    <p class="property-description">
+                        "Sea Esta" in Sea Isle - THE activity house! 2 pools (large + cowboy pool for kids), private volleyball court, fire pit. Ocean views from the deck! Community boat launch access. 3 min walk to beach.
+                    </p>
+                </div>
+                <div class="property-footer">
+                    <div class="price-info">
+                        <span class="total-price">$2,682</span>
+                        <span class="price-details">for 2 nights • <span class="per-person">~$192/person</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/2757575?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn">View on VRBO →</a>
+                </div>
+            </article>
+
+            <!-- Option 11 - TOP RATED -->
+            <article class="property-card premium">
+                <div class="property-header">
+                    <h3><span class="option-badge" style="background: #f1c40f; color: #2c3e50;">11</span> ⭐ The Oasis - TOP RATED + Hot Tub</h3>
+                    <span class="rating-badge">⭐ 10/10 EXCEPTIONAL</span>
+                </div>
+                <div class="photo-gallery-section">
+                    <div class="photo-row">
+                        <div class="photo-container" data-option="11" data-type="pool" style="background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏊♨️</span>
+                                <span>HEATED Pool + HOT TUB!<br>Pool toys included</span>
+                                <a href="https://www.vrbo.com/3975201?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">⭐ Pool + Hot Tub</div>
+                        </div>
+                        <div class="photo-container" data-option="11" data-type="exterior" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                            <div class="photo-placeholder">
+                                <span class="emoji">🏠</span>
+                                <span>Your Personal Oasis<br>4 Outdoor Seating Areas</span>
+                                <a href="https://www.vrbo.com/3975201?pwaThumbnailDialog=thumbnail-gallery" target="_blank">View on VRBO →</a>
+                            </div>
+                            <div class="photo-label">⭐ Exterior</div>
+                        </div>
+                    </div>
+                    <a href="https://www.vrbo.com/3975201?pwaThumbnailDialog=thumbnail-gallery" target="_blank" class="view-photos-btn" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">📸 View All Photos ⭐ TOP RATED</a>
+                </div>
+                <div class="property-details">
+                    <div class="stats-row">
+                        <div class="stat-item"><span class="emoji">🛏️</span> <strong>5 Bedrooms</strong></div>
+                        <div class="stat-item"><span class="emoji">🚿</span> <strong>3 Baths</strong></div>
+                        <div class="stat-item"><span class="emoji">👥</span> <strong>Sleeps 14</strong></div>
+                        <div class="stat-item"><span class="emoji">🎯</span> <strong>Perfect for 14!</strong></div>
+                    </div>
+                    <div class="amenities-row">
+                        <span class="amenity-tag highlight">🏊 HEATED Pool</span>
+                        <span class="amenity-tag highlight">♨️ HOT TUB!</span>
+                        <span class="amenity-tag highlight">🎮 Game Room</span>
+                        <span class="amenity-tag highlight">🔥 Fire Pit</span>
+                        <span class="amenity-tag">🧸 Pool Toys</span>
+                        <span class="amenity-tag">🛒 Beach Wagon</span>
+                        <span class="amenity-tag" style="background: #ffcccc;">❌ No Pets</span>
+                    </div>
+                    <p class="property-description">
+                        Perfect 10/10! Your own personal OASIS! HEATED pool + spa, 4 outdoor seating areas, fire pit, pool toys & beach wagon included! Game room with mini pool table, arcade & foosball. Exact fit for 14 people!
+                    </p>
+                </div>
+                <div class="property-footer" style="background: #f4ecf7;">
+                    <div class="price-info">
+                        <span class="total-price" style="color: #9b59b6;">$2,133 ⭐</span>
+                        <span class="price-details">for 2 nights • <span class="per-person" style="color: #9b59b6;">~$152/person</span></span>
+                    </div>
+                    <a href="https://www.vrbo.com/3975201?regionId=1341&chkin=2026-06-26&chkout=2026-06-28&useRewards=false&adults=14" target="_blank" class="book-btn" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">View on VRBO →</a>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Final Recommendations -->
+        <section class="highlights-section" style="margin-top: 2.5rem; background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);">
+            <h2>🎯 Our Top Recommendations</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="icon">💰</div>
+                    <h4>Best Overall Value</h4>
+                    <p><strong>Option 4</strong><br>Two homes, $149/pp!</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">🏆</div>
+                    <h4>Best Experience</h4>
+                    <p><strong>Option 11</strong><br>Perfect 10/10 + spa</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">🏖️</div>
+                    <h4>Beach Lovers</h4>
+                    <p><strong>Option 8</strong><br>10/10 + 2 min walk</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">🎉</div>
+                    <h4>Most Fun</h4>
+                    <p><strong>Option 10</strong><br>2 pools + volleyball!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created for our Galveston Beach Trip | June 26-28, 2026 | 14 Travelers</p>
+        <p>All prices as of Dec 2024. Click "View on VRBO" to see current photos and rates.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">To add images: Place <code>pool.jpg</code> and <code>exterior.jpg</code> in the <code>images/option-X/</code> folders</p>
+    </footer>
+
+    <script>
+        // Supported image extensions to try
+        const extensions = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
+
+        // Store gallery state for each container
+        const galleryState = {};
+
+        // Function to try loading an image with different extensions
+        function tryLoadImage(basePath) {
+            return new Promise((resolve) => {
+                let index = 0;
+                
+                function tryNext() {
+                    if (index >= extensions.length) {
+                        resolve(null);
+                        return;
+                    }
+                    
+                    const img = new Image();
+                    const src = `${basePath}.${extensions[index]}`;
+                    
+                    img.onload = function() {
+                        resolve(src);
+                    };
+                    
+                    img.onerror = function() {
+                        index++;
+                        tryNext();
+                    };
+                    
+                    img.src = src;
+                }
+                
+                tryNext();
+            });
+        }
+
+        // Function to find all images for a type (pool, pool2, pool3, etc.)
+        async function findAllImages(optionNum, type) {
+            const images = [];
+            
+            // Try the base image first (e.g., pool.jpg)
+            const baseImage = await tryLoadImage(`images/option-${optionNum}/${type}`);
+            if (baseImage) {
+                images.push(baseImage);
+            }
+            
+            // Try numbered images (e.g., pool2.jpg, pool3.jpg, ...)
+            let num = 2;
+            let maxTries = 20; // Prevent infinite loop
+            while (num <= maxTries) {
+                const numberedImage = await tryLoadImage(`images/option-${optionNum}/${type}${num}`);
+                if (numberedImage) {
+                    images.push(numberedImage);
+                    num++;
+                } else {
+                    break; // Stop when we don't find the next number
+                }
+            }
+            
+            return images;
+        }
+
+        // Function to create gallery UI
+        function createGallery(container, images, optionNum, type) {
+            const galleryId = `gallery-${optionNum}-${type}`;
+            galleryState[galleryId] = { currentIndex: 0, images: images };
+            
+            // Hide placeholder
+            const placeholder = container.querySelector('.photo-placeholder');
+            if (placeholder) {
+                placeholder.style.display = 'none';
+            }
+            
+            // Create gallery wrapper
+            const galleryWrapper = document.createElement('div');
+            galleryWrapper.className = 'gallery-images';
+            
+            // Add all images
+            images.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Option ${optionNum} ${type} ${index + 1}`;
+                if (index === 0) img.classList.add('active');
+                galleryWrapper.appendChild(img);
+            });
+            
+            container.insertBefore(galleryWrapper, container.firstChild);
+            
+            // Only add navigation if there are multiple images
+            if (images.length > 1) {
+                // Add prev button
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'gallery-nav prev';
+                prevBtn.innerHTML = '‹';
+                prevBtn.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navigateGallery(galleryId, -1);
+                };
+                container.appendChild(prevBtn);
+                
+                // Add next button
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'gallery-nav next';
+                nextBtn.innerHTML = '›';
+                nextBtn.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navigateGallery(galleryId, 1);
+                };
+                container.appendChild(nextBtn);
+                
+                // Add image counter
+                const counter = document.createElement('div');
+                counter.className = 'image-counter';
+                counter.id = `counter-${galleryId}`;
+                counter.textContent = `1 / ${images.length}`;
+                container.appendChild(counter);
+            }
+        }
+
+        // Function to navigate gallery
+        function navigateGallery(galleryId, direction) {
+            const state = galleryState[galleryId];
+            if (!state) return;
+            
+            const { images, currentIndex } = state;
+            let newIndex = currentIndex + direction;
+            
+            // Wrap around
+            if (newIndex < 0) newIndex = images.length - 1;
+            if (newIndex >= images.length) newIndex = 0;
+            
+            state.currentIndex = newIndex;
+            
+            // Update active image
+            const [, optionNum, type] = galleryId.split('-');
+            const container = document.querySelector(`[data-option="${optionNum}"][data-type="${type}"]`);
+            if (container) {
+                const imgs = container.querySelectorAll('.gallery-images img');
+                imgs.forEach((img, i) => {
+                    img.classList.toggle('active', i === newIndex);
+                });
+                
+                // Update counter
+                const counter = document.getElementById(`counter-${galleryId}`);
+                if (counter) {
+                    counter.textContent = `${newIndex + 1} / ${images.length}`;
+                }
+            }
+        }
+
+        // Function to load images for a specific option
+        async function loadImagesForOption(optionNum) {
+            const poolContainer = document.querySelector(`[data-option="${optionNum}"][data-type="pool"]`);
+            const exteriorContainer = document.querySelector(`[data-option="${optionNum}"][data-type="exterior"]`);
+            
+            if (poolContainer) {
+                const poolImages = await findAllImages(optionNum, 'pool');
+                if (poolImages.length > 0) {
+                    createGallery(poolContainer, poolImages, optionNum, 'pool');
+                }
+            }
+            
+            if (exteriorContainer) {
+                const exteriorImages = await findAllImages(optionNum, 'exterior');
+                if (exteriorImages.length > 0) {
+                    createGallery(exteriorContainer, exteriorImages, optionNum, 'exterior');
+                }
+            }
+        }
+
+        // Load images for all options when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            for (let i = 1; i <= 11; i++) {
+                loadImagesForOption(i);
+            }
+        });
+
+        // Keyboard navigation for focused gallery
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                const hoveredContainer = document.querySelector('.photo-container:hover');
+                if (hoveredContainer) {
+                    const optionNum = hoveredContainer.dataset.option;
+                    const type = hoveredContainer.dataset.type;
+                    const galleryId = `gallery-${optionNum}-${type}`;
+                    if (galleryState[galleryId] && galleryState[galleryId].images.length > 1) {
+                        navigateGallery(galleryId, e.key === 'ArrowLeft' ? -1 : 1);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
