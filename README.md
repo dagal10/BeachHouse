@@ -12,7 +12,7 @@ A beautiful, interactive comparison tool for 11 Galveston beach house vacation r
 
 ## View the Site
 
-Visit the live site: [Your GitHub Pages URL will appear here after setup]
+Visit the live site: [Website](https://dagal10.github.io/BeachHouse/)
 
 ## Setup Instructions
 
