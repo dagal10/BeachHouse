@@ -5,14 +5,11 @@ listings = [
     ('4146676', 'Spacious Beach House'),
     ('2873463', 'Large Luxurious Home'),
     ('3737974', 'Family Retreat'),
-    ('2156016', 'Galveston Gem'),
     ('3142857', 'Charming Classic'),
     ('3252017', 'Beachside Comfort'),
-    ('1269804', 'Family-Friendly'),
     ('3284616', 'Island Time'),
     ('4379912', 'Sandpiper House'),
     ('2757575', 'Cozy Home 2 Pools'),
-    ('3975201', 'The Oasis'),
 ]
 
 results = {}
@@ -21,7 +18,7 @@ with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
     
     for i, (listing_id, name) in enumerate(listings):
-        print(f"[{i+1}/11] {name}...", end=" ", flush=True)
+        print(f"[{i+1}/8] {name}...", end=" ", flush=True)
         
         page = browser.new_page()
         
@@ -79,4 +76,5 @@ for listing_id, data in results.items():
         print(f"  {data['images'][0]}")
     else:
         print("  No images captured")
+
 

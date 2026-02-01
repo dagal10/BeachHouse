@@ -7,14 +7,11 @@ listings = [
     ('4146676', 'Spacious Beach House'),
     ('2873463', 'Large Luxurious Home'),
     ('3737974', 'Family Retreat'),
-    ('2156016', 'Galveston Gem'),
     ('3142857', 'Charming Classic'),
     ('3252017', 'Beachside Comfort'),
-    ('1269804', 'Family-Friendly'),
     ('3284616', 'Island Time'),
     ('4379912', 'Sandpiper House'),
     ('2757575', 'Cozy Home 2 Pools'),
-    ('3975201', 'The Oasis'),
 ]
 
 headers = {
@@ -75,4 +72,5 @@ with open('image_urls.json', 'w') as f:
     json.dump(results, f, indent=2)
     
 print('Results saved to image_urls.json')
+
 

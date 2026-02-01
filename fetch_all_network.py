@@ -54,3 +54,4 @@ with sync_playwright() as p:
     input("\nPress Enter to close browser...")
     browser.close()
 
+

@@ -28,14 +28,11 @@ To add images to the comparison page:
    │   └── exterior2.jpg
    ├── option-2/    ← Large Luxurious Home (VRBO #2873463)
    ├── option-3/    ← Family Retreat (VRBO #3737974)
-   ├── option-4/    ← Galveston Gem - BEST VALUE (VRBO #2156016)
-   ├── option-5/    ← Charming Classic (VRBO #3142857)
-   ├── option-6/    ← Beachside Comfort (VRBO #3252017)
-   ├── option-7/    ← Family-Friendly (VRBO #1269804)
-   ├── option-8/    ← Island Time - TOP RATED (VRBO #3284616)
-   ├── option-9/    ← Sandpiper House (VRBO #4379912)
-   ├── option-10/   ← 2 Pools + Volleyball (VRBO #2757575)
-   └── option-11/   ← The Oasis - TOP RATED (VRBO #3975201)
+   ├── option-4/    ← Charming Classic (VRBO #3142857)
+   ├── option-5/    ← Beachside Comfort (VRBO #3252017)
+   ├── option-6/    ← Island Time - TOP RATED (VRBO #3284616)
+   ├── option-7/    ← Sandpiper House (VRBO #4379912)
+   └── option-8/    ← 2 Pools + Volleyball (VRBO #2757575)
 
 4. Refresh the page - images will automatically appear!
 
