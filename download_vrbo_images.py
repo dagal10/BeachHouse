@@ -14,6 +14,15 @@ from pathlib import Path
 from urllib.parse import urlparse
 import re
 
+try:
+    from PIL import Image
+    import io
+    HAS_PIL = True
+except ImportError:
+    HAS_PIL = False
+    print("[!] Warning: PIL/Pillow not installed. Install with: pip install Pillow")
+    print("[!] Images will be saved in original format (may not be PNG)")
+
 # VRBO listing IDs mapped to option numbers
 listings = [
     ('4146676', 'Spacious Beach House', 1),
@@ -68,7 +77,7 @@ def is_pool_image(url, alt_text=''):
 
 
 def download_image(url, filepath, headers=None):
-    """Download an image from URL to filepath"""
+    """Download an image from URL to filepath and convert to PNG"""
     try:
         if headers is None:
             headers = {
@@ -84,14 +93,42 @@ def download_image(url, filepath, headers=None):
         # Ensure directory exists
         filepath.parent.mkdir(parents=True, exist_ok=True)
         
-        # Download and save
-        with open(filepath, 'wb') as f:
-            for chunk in response.iter_content(chunk_size=8192):
-                f.write(chunk)
+        # Download image data
+        image_data = response.content
         
-        return True
+        # Convert to PNG using PIL/Pillow
+        if HAS_PIL:
+            try:
+                # Open image from bytes
+                img = Image.open(io.BytesIO(image_data))
+                
+                # Convert RGBA to RGB if necessary (for JPEG compatibility)
+                if img.mode == 'RGBA':
+                    # Create white background
+                    rgb_img = Image.new('RGB', img.size, (255, 255, 255))
+                    rgb_img.paste(img, mask=img.split()[3])  # Use alpha channel as mask
+                    img = rgb_img
+                elif img.mode not in ('RGB', 'L'):
+                    img = img.convert('RGB')
+                
+                # Save as PNG
+                img.save(filepath, 'PNG')
+                return True
+            except Exception as e:
+                # Fallback: save original format
+                print(f"      [!] PNG conversion failed, saving original: {e}")
+                with open(filepath, 'wb') as f:
+                    f.write(image_data)
+                return True
+        else:
+            # If PIL not available, save as-is but with .png extension
+            # This might not work perfectly, but better than nothing
+            with open(filepath, 'wb') as f:
+                f.write(image_data)
+            return True
+        
     except Exception as e:
-        print(f"      ❌ Download failed: {e}")
+        print(f"      [!] Download failed: {e}")
         return False
 
 
@@ -100,9 +137,8 @@ def extract_image_urls(page):
     image_urls = []
     
     try:
-        # Wait for images to load
-        page.wait_for_load_state('networkidle', timeout=10000)
-        jitter_delay(1, 2)
+        # Wait for images to load (skip networkidle as VRBO has continuous activity)
+        jitter_delay(2, 3)  # Give time for lazy-loaded images
         
         # Get all image elements with their URLs and alt text
         images_data = page.evaluate("""
@@ -188,7 +224,7 @@ def extract_image_urls(page):
         image_urls = images_data
         
     except Exception as e:
-        print(f"      ⚠️  Error extracting images: {e}")
+        print(f"      [!] Error extracting images: {e}")
     
     return image_urls
 
@@ -225,50 +261,47 @@ def organize_images(image_urls, option_dir, listing_name):
     downloaded = {'pool': 0, 'exterior': 0, 'other': 0}
     
     # Download pool images
-    print(f"      🏊 Downloading pool images...")
+    print(f"      [*] Downloading pool images...")
     for i, img_data in enumerate(pool_images[:10], 1):  # Limit to 10 pool images
         url = img_data['url']
-        ext = Path(urlparse(url).path).suffix or '.jpg'
-        filename = f'pool{i}.{ext.lstrip(".")}' if i > 1 else f'pool.{ext.lstrip(".")}'
+        filename = f'pool{i}.png' if i > 1 else f'pool.png'
         filepath = option_dir / filename
         
         if not filepath.exists():  # Skip if already exists
             if download_image(url, filepath):
                 downloaded['pool'] += 1
-                print(f"        ✅ {filename}")
+                print(f"        [+] {filename}")
             jitter_delay(0.5, 1.5)
         else:
-            print(f"        ⏭️  {filename} (already exists)")
+            print(f"        [>] {filename} (already exists)")
     
     # Download exterior images
-    print(f"      🏠 Downloading exterior images...")
+    print(f"      [*] Downloading exterior images...")
     for i, img_data in enumerate(exterior_images[:10], 1):  # Limit to 10 exterior images
         url = img_data['url']
-        ext = Path(urlparse(url).path).suffix or '.jpg'
-        filename = f'exterior{i}.{ext.lstrip(".")}' if i > 1 else f'exterior.{ext.lstrip(".")}'
+        filename = f'exterior{i}.png' if i > 1 else f'exterior.png'
         filepath = option_dir / filename
         
         if not filepath.exists():  # Skip if already exists
             if download_image(url, filepath):
                 downloaded['exterior'] += 1
-                print(f"        ✅ {filename}")
+                print(f"        [+] {filename}")
             jitter_delay(0.5, 1.5)
         else:
-            print(f"        ⏭️  {filename} (already exists)")
+            print(f"        [>] {filename} (already exists)")
     
     # Download other images (uncategorized) as exterior
     if other_images:
-        print(f"      📸 Downloading additional images...")
+        print(f"      [*] Downloading additional images...")
         for i, img_data in enumerate(other_images[:5], 1):  # Limit to 5 additional
             url = img_data['url']
-            ext = Path(urlparse(url).path).suffix or '.jpg'
-            filename = f'exterior{len(exterior_images) + i}.{ext.lstrip(".")}'
+            filename = f'exterior{len(exterior_images) + i}.png'
             filepath = option_dir / filename
             
             if not filepath.exists():
                 if download_image(url, filepath):
                     downloaded['exterior'] += 1
-                    print(f"        ✅ {filename}")
+                    print(f"        [+] {filename}")
                 jitter_delay(0.5, 1.5)
     
     return downloaded
@@ -325,31 +358,34 @@ def main():
             
             try:
                 # Navigate to page
-                print(f"  🌐 Navigating to {url}...")
+                print(f"  [*] Navigating to {url}...")
                 page.goto(url, wait_until='domcontentloaded', timeout=30000)
                 
                 # Wait with jitter
                 delay = jitter_delay(2, 4)
-                print(f"  ⏱️  Waited {delay:.1f}s")
+                print(f"  [*] Waited {delay:.1f}s")
                 
-                # Wait for page to be ready
-                print("  ⏳ Waiting for images to load...")
-                page.wait_for_load_state('networkidle', timeout=15000)
-                jitter_delay(2, 3)
+                # Wait for page to be ready (use 'load' instead of 'networkidle' as VRBO has continuous network activity)
+                print("  [*] Waiting for images to load...")
+                try:
+                    page.wait_for_load_state('load', timeout=20000)
+                except:
+                    pass  # Continue even if timeout
+                jitter_delay(3, 5)  # Give extra time for images to load
                 
                 # Extract image URLs
-                print("  📸 Extracting image URLs...")
+                print("  [*] Extracting image URLs...")
                 image_urls = extract_image_urls(page)
-                print(f"  ✅ Found {len(image_urls)} images")
+                print(f"  [+] Found {len(image_urls)} images")
                 
                 if not image_urls:
-                    print("  ⚠️  No images found, trying alternative method...")
+                    print("  [!] No images found, trying alternative method...")
                     # Try scrolling to trigger lazy loading
                     for _ in range(3):
                         page.evaluate("window.scrollBy(0, 500)")
                         jitter_delay(1, 2)
                     image_urls = extract_image_urls(page)
-                    print(f"  ✅ Found {len(image_urls)} images after scrolling")
+                    print(f"  [+] Found {len(image_urls)} images after scrolling")
                 
                 # Download and organize images
                 if image_urls:
@@ -360,9 +396,9 @@ def main():
                         'total_images': len(image_urls),
                         'downloaded': downloaded
                     }
-                    print(f"  ✅ Downloaded: {downloaded['pool']} pool, {downloaded['exterior']} exterior")
+                    print(f"  [+] Downloaded: {downloaded['pool']} pool, {downloaded['exterior']} exterior")
                 else:
-                    print("  ❌ No images to download")
+                    print("  [!] No images to download")
                     results[listing_id] = {
                         'option': option_num,
                         'name': name,
@@ -373,10 +409,10 @@ def main():
                 # Random delay before next listing
                 if i < len(listings):
                     delay = jitter_delay(3, 6)
-                    print(f"  ⏱️  Waiting {delay:.1f}s before next listing...")
+                    print(f"  [*] Waiting {delay:.1f}s before next listing...")
                 
             except Exception as e:
-                print(f"  ❌ Error processing {name}: {e}")
+                print(f"  [!] Error processing {name}: {e}")
                 results[listing_id] = {
                     'option': option_num,
                     'name': name,
@@ -391,7 +427,7 @@ def main():
         json.dump(results, f, indent=2, ensure_ascii=False)
     
     print("\n" + "=" * 70)
-    print(f"✅ Results saved to {output_file}")
+    print(f"[+] Results saved to {output_file}")
     print("=" * 70)
     
     # Print summary

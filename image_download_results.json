@@ -1,0 +1,82 @@
+{
+  "4146676": {
+    "option": 1,
+    "name": "Spacious Beach House",
+    "total_images": 0,
+    "downloaded": {
+      "pool": 0,
+      "exterior": 0,
+      "other": 0
+    }
+  },
+  "2873463": {
+    "option": 2,
+    "name": "Large Luxurious Home",
+    "total_images": 5,
+    "downloaded": {
+      "pool": 0,
+      "exterior": 1,
+      "other": 0
+    }
+  },
+  "3737974": {
+    "option": 3,
+    "name": "Family Retreat",
+    "total_images": 5,
+    "downloaded": {
+      "pool": 1,
+      "exterior": 2,
+      "other": 0
+    }
+  },
+  "3142857": {
+    "option": 4,
+    "name": "Charming Classic",
+    "total_images": 5,
+    "downloaded": {
+      "pool": 0,
+      "exterior": 1,
+      "other": 0
+    }
+  },
+  "3252017": {
+    "option": 5,
+    "name": "Beachside Comfort",
+    "total_images": 5,
+    "downloaded": {
+      "pool": 0,
+      "exterior": 2,
+      "other": 0
+    }
+  },
+  "3284616": {
+    "option": 6,
+    "name": "Island Time",
+    "total_images": 5,
+    "downloaded": {
+      "pool": 0,
+      "exterior": 1,
+      "other": 0
+    }
+  },
+  "4379912": {
+    "option": 7,
+    "name": "Sandpiper House",
+    "total_images": 5,
+    "downloaded": {
+      "pool": 0,
+      "exterior": 3,
+      "other": 0
+    }
+  },
+  "2757575": {
+    "option": 8,
+    "name": "Cozy Home 2 Pools",
+    "total_images": 5,
+    "downloaded": {
+      "pool": 1,
+      "exterior": 0,
+      "other": 0
+    }
+  }
+}

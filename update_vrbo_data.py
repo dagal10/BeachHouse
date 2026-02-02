@@ -72,8 +72,7 @@ def extract_property_data(page, listing_id, name, option_num):
     }
     
     try:
-        # Wait for page to be interactive
-        page.wait_for_load_state('networkidle', timeout=10000)
+        # Wait for page to be interactive (skip networkidle as VRBO has continuous activity)
         jitter_delay(1, 2)
         
         # Extract title
@@ -206,7 +205,7 @@ def extract_property_data(page, listing_id, name, option_num):
             human_like_scroll(page)
         
     except Exception as e:
-        print(f"  ⚠️  Error extracting data: {e}")
+        print(f"  [!] Error extracting data: {e}")
     
     return data
 
@@ -294,40 +293,43 @@ def main():
             
             try:
                 # Navigate to page with slow, human-like behavior
-                print(f"  🌐 Navigating to {url}...")
+                print(f"  [*] Navigating to {url}...")
                 page.goto(url, wait_until='domcontentloaded', timeout=PAGE_LOAD_TIMEOUT)
                 
                 # Wait with jitter
                 delay = jitter_delay(2, 4)
-                print(f"  ⏱️  Waited {delay:.1f}s (jitter)")
+                print(f"  [*] Waited {delay:.1f}s (jitter)")
                 
-                # Wait for page to be ready
-                print("  ⏳ Waiting for page to load...")
-                page.wait_for_load_state('networkidle', timeout=15000)
-                jitter_delay(1, 2)
+                # Wait for page to be ready (use 'load' instead of 'networkidle' as VRBO has continuous network activity)
+                print("  [*] Waiting for page to load...")
+                try:
+                    page.wait_for_load_state('load', timeout=20000)
+                except:
+                    pass  # Continue even if timeout
+                jitter_delay(2, 4)  # Give extra time for content to render
                 
                 # Human-like interaction: scroll and move mouse
-                print("  🖱️  Simulating human interaction...")
+                print("  [*] Simulating human interaction...")
                 human_like_scroll(page)
                 
                 # Extract data
-                print("  📊 Extracting property data...")
+                print("  [*] Extracting property data...")
                 data = extract_property_data(page, listing_id, name, option_num)
                 results[listing_id] = data
                 
                 # Print summary
-                print(f"  ✅ Title: {data['title'][:50] if data['title'] else 'N/A'}...")
-                print(f"  ✅ Price: {data['price'] if data['price'] else 'N/A'}")
-                print(f"  ✅ Images found: {len(data['images'])}")
-                print(f"  ✅ Amenities: {len(data['amenities'])}")
+                print(f"  [+] Title: {data['title'][:50] if data['title'] else 'N/A'}...")
+                print(f"  [+] Price: {data['price'] if data['price'] else 'N/A'}")
+                print(f"  [+] Images found: {len(data['images'])}")
+                print(f"  [+] Amenities: {len(data['amenities'])}")
                 
                 # Random delay before next listing
                 if i < len(listings):
                     delay = jitter_delay(3, 6)
-                    print(f"  ⏱️  Waiting {delay:.1f}s before next listing...")
+                    print(f"  [*] Waiting {delay:.1f}s before next listing...")
                 
             except Exception as e:
-                print(f"  ❌ Error processing {name}: {e}")
+                print(f"  [!] Error processing {name}: {e}")
                 results[listing_id] = {
                     'listing_id': listing_id,
                     'name': name,
@@ -343,7 +345,7 @@ def main():
         json.dump(results, f, indent=2, ensure_ascii=False)
     
     print("\n" + "=" * 70)
-    print(f"✅ Results saved to {output_file}")
+    print(f"[+] Results saved to {output_file}")
     print("=" * 70)
     
     # Print summary
